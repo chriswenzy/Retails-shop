@@ -10,6 +10,7 @@ import { Nofile } from './Pages/Auth/Nofile';
 import {First_login} from './Pages/Auth/First_login';
 import {Reset_password} from './Pages/Auth/Reset_password';
 import { Welcome } from './Pages/Auth/Welcome_page';
+import { Dashboard } from './Pages/Dashboard/Dashboard'
 import {Layout} from './Component/Layouts/Layout'
 
 
@@ -27,6 +28,7 @@ class App extends Component {
               <Route path="/First-login" component={First_login} />
               <Route path="/Reset-password" component={Reset_password} />
               <Route path="/Welcome" component={Welcome}/>
+              <Route path="/Dashboard" component={Dashboard}  />
               <Route component={Nofile} />
 
             </Switch>

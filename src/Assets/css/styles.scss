@@ -1,9 +1,12 @@
 
 $main-bg: #1C3FAA;
 $main-gradient: linear-gradient(180deg, rgba(29,13,245,1) 0%, rgba(15,7,123,1) 100%);
+$dash-gradient: linear-gradient(48deg, rgba(28,63,170,1) 0%, rgba(28,62,168,1) 59%, rgba(14,32,85,1) 100%);
+
 $text-color: #1C3FAA;
 $box-shadow-input: 0px 6px 20px 0px rgba(28,63,170,0.4);
 $box-shadow-input-low: 0px 6px 20px 0px rgba(28,63,170,0.1);
+$box-shadow-card: 0px 18px 32px 0px rgba(76,147,255,0.38);
 $title-font: 10px * 3; 
 $box-shadow-btn: 0px 5px 30px 0px rgba(0,0,0,0.15);
 $bg-img: '../Img/login-bg.png';
@@ -12,6 +15,13 @@ $bg-img: '../Img/login-bg.png';
 * , a{
     font-family: 'Lato', sans-serif;
     color: $text-color;
+}
+a:hover{
+    text-decoration: none;
+}
+
+body{
+    background: #F5F5FD;
 }
 
 @mixin formContainer($size, $color, $pad, $margin, $border  ) {
@@ -23,7 +33,7 @@ $bg-img: '../Img/login-bg.png';
   }
 
   .formContainer-1{
-    @include formContainer(450px,white , 20px, 140px, 20px )
+    @include formContainer(450px, transparent, 20px, 140px, 20px )
 }
 
   .formContainer-2{
@@ -31,11 +41,29 @@ $bg-img: '../Img/login-bg.png';
   }
 
   @media (max-width: 700px){
-      .formContainer-2{
+      .formContainer-1{
           background-color: white;
       }
+      .formContainer-2{
+        background-color: white;
+    }
   }
 
+  .logo{
+    height: 35px;
+    width: 130px;
+}
+
+.notify{
+    height: 25px;
+    width: 25px;
+}
+
+.activity-icon{
+    @extend .notify;
+    width: 45px;
+    height: 45px;
+}
   .authContainer{
     background: url($bg-img);
     height: 100vh !important ;
@@ -118,5 +146,51 @@ $bg-img: '../Img/login-bg.png';
     background-color: $text-color;
 }
 
+.bg-lite{
+    background-color: #FFFFFF;
+}
+
+.jumbotron-fluid{
+    background: $dash-gradient ;
+    height: 300px;
+}
+
+.dash-content{
+    margin-top: -90px;
+    z-index: 1;
+}
+
+.dash-icon{
+    width: 100px;
+    height: 100px;    
+}
+
+.card{
+    transition: all .6s ease;
+}
+
+.card:hover{
+    box-shadow: $box-shadow-card;
+    transform: scale(1.05, 1.05);
+    animation: pulse 6s;
+    transition: all .6s ease;
+}
+
+.card-header{
+    background: white;
+}
+
+.activity-card{
+    height: 355px;
+}
+
+.activity-info{
+    box-sizing: border-box;
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 
