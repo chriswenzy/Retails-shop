@@ -44,9 +44,11 @@ export const Login = () => (
 
                             <Form.Group>
                                 <div className="mt-5">
-                                    <Button variant="secondary btn-action" size="lg" block>
-                                        LOGIN
-                                    </Button>
+                                    <Link to="/Dashboard">
+                                        <Button variant="secondary btn-action" size="lg" block>
+                                            LOGIN
+                                        </Button>
+                                    </Link>
                                 </div>
                             </Form.Group>
                         </Form>

@@ -119,7 +119,7 @@ export const Dashboard = () => (
                             </Card.Header>
                             <Card.Body>
 
-                                <div className=" clearfix mb-2" >
+                                <div className=" clearfix mb-2">
                                     <img  className="activity-icon float-left mr-2" src={User} alt="users icon" />
                                     <small className="mb-5" > <strong> Chris Chukwuebuka </strong> </small> 
                                     <small className="float-right text-muted"> 09:18am </small> <br></br>
