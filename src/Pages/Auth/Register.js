@@ -38,8 +38,10 @@ input[type=checkbox] {
   }
 `;
 
-export const Register = () => (
+export const Register = () => {
+    const [toggle,settoggle]= React.useState(false)
 
+return(
     <Styles>
         <div className="authContainer">
            
@@ -52,12 +54,12 @@ export const Register = () => (
                     <div className="stepwizard col-md-offset-3">
                         <div className="stepwizard-row setup-panel">
                         <div className="stepwizard-step">
-                        <a href="#step-1" type="button" className="btn btn-circle btn-default1">1</a>
+                        <a href="#step-1" type="button" className="btn btn-circle btn-default1"onClick={()=>{settoggle(false)}}>1</a>
                         <p>Personal Details</p>
                         </div>
                         
                         <div className="stepwizard-step">
-                        <a href="#step-2" type="button" className="btn btn-default1 btn-circle" disabled="disabled">2</a>
+                        <a href="#step-2" type="button" className="btn btn-default1 btn-circle" disabled="disabled" onClick={()=>{settoggle(true)}}>2</a>
                         <p>Business Details</p>
                         </div>
                         </div>
@@ -65,7 +67,7 @@ export const Register = () => (
                     <input id='step2' type='checkbox'></input>
                     
                     <Form>
-                        
+                    {!toggle ? (
                     <div className="" id="part1">
                     <Form.Row>
                             <Form.Group as={Col}>
@@ -128,14 +130,15 @@ export const Register = () => (
 
                         <Form.Group>
                                 <div className="">
-                                    <Button variant="secondary btn-action" size="lg" block for='step2' id="continue-step2">
+                                    <Button variant="secondary btn-action" size="lg" block for='step2' id="continue-step2" onClick={()=>{settoggle(true)}}>
                                     CONTIUNE
                                     </Button>
                                 </div>
                         </Form.Group>
                     </div>
 
-                    <div className="" id="part2">
+                   ) : (
+                    <div className="">
                     <Form.Row>
                             <Form.Group as={Col}>
                             <Form.Label>Company name <span className="text-danger">*</span></Form.Label>
@@ -202,6 +205,7 @@ export const Register = () => (
                                 </div>
                         </Form.Group>
                     </div>
+                   )}
                         
                     </Form>
                     </div>
@@ -213,6 +217,7 @@ export const Register = () => (
         </div>
     </Styles>
 )
+}
    
        
 

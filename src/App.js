@@ -2,7 +2,6 @@ import React, { Component} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Assets/css/styles.scss';
 import './Assets/js/main'
-
 import { Home } from './Pages/Auth/Home';
 import { Login } from './Pages/Auth/Login';
 import { Register } from './Pages/Auth/Register';
@@ -12,13 +11,14 @@ import {Reset_password} from './Pages/Auth/Reset_password';
 import { Welcome } from './Pages/Auth/Welcome_page';
 import { Dashboard } from './Pages/Dashboard/Dashboard'
 import {Layout} from './Component/Layouts/Layout'
+import {AuthProvider} from './Context/AuthContext'
 
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        
+        <AuthProvider>
           <Router>
             <Switch>
 
@@ -33,7 +33,7 @@ class App extends Component {
 
             </Switch>
           </Router>
-      
+          </AuthProvider>
       </React.Fragment>
     );
   }

@@ -2,6 +2,9 @@ import React  from 'react';
 import { Form, Col, Row, Container, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {Formik,ErrorMessage} from 'formik'
+import * as Yup from 'yup';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Styles = styled.div `
 
@@ -10,8 +13,9 @@ const Styles = styled.div `
 `;
 
 
-export const Login = () => (
-
+export const Login = () => {
+    const {login} = React.useContext(AuthContext)
+return(
     <Styles>
         <div className="authContainer">
            
@@ -21,14 +25,35 @@ export const Login = () => (
                 <Col xs={6} md={6}>
                     <div className="formContainer-1">
                         <h3 className="title-text mb-5">Welcome to NRS</h3>
-                        <Form>
+                        <Formik
+                        initialValues={{ email: '', password: ''}}
+                        validationSchema={Yup.object({
+                          email: Yup.string()
+                            .email('Invalid email address')
+                            .required('Required'),
+                        password: Yup.string()
+                            .max(8, 'Must be 8 characters or less')
+                            .required('Required'),
+                        })}
+                        onSubmit={(values, { setSubmitting }) => {
+                        //   setTimeout(() => {
+                            // alert(JSON.stringify(values, null, 2));
+                            login(values)
+                            console.log(values)
+                            setSubmitting(false);
+                        //   }, 400);
+                        }}
+                        >
+                        {(setSubmitting,handleSubmit,values) => (
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Control type="email" placeholder="Enter email" name='email'/>
+                                <ErrorMessage name="email" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control type="password" placeholder="Password" name='password' />
                             </Form.Group>
                             <Form.Group>
                                  <div className="mt-4 clearfix">
@@ -44,14 +69,14 @@ export const Login = () => (
 
                             <Form.Group>
                                 <div className="mt-5">
-                                    <Link to="/Dashboard">
-                                        <Button variant="secondary btn-action" size="lg" block>
+                                        <Button type='submit'  variant="secondary btn-action" size="lg" disabled={!setSubmitting} block>
                                             LOGIN
                                         </Button>
-                                    </Link>
                                 </div>
                             </Form.Group>
                         </Form>
+                        )}
+                        </Formik>
                     </div>
                 </Col>
             </Row>
@@ -59,7 +84,8 @@ export const Login = () => (
 
         </div>
     </Styles>
-)
+
+)}
    
        
 
