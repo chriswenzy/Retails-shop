@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Row, Container, Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
+import { Button, Navbar, Nav } from 'react-bootstrap';
 import Logo from '../../Assets/Img/logo.png';
 import { Link } from 'react-router-dom';
 export const Home = () => (

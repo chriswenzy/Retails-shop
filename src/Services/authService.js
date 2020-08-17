@@ -1,4 +1,3 @@
-import React from 'react'
 import {ApiClient} from '../Util/ApiClient'
 
 
@@ -34,6 +33,30 @@ export class AuthService{
         }
        
     }
+
+    static async sendResetEmail(email) {
+        return ApiClient.post(
+          'password/email',
+          { email }
+        )
+      }
+
+    static async forgetPassword(
+        password,
+        confirm_password,
+        token,
+        email
+      ) {
+        return ApiClient.post(
+          'password/reset',
+          {
+            email,
+            password,
+            confirm_password,
+            token,
+          }
+        )
+      }
 
     static async logout(){
         try{

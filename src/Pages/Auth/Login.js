@@ -15,6 +15,7 @@ const Styles = styled.div `
 
 export const Login = () => {
     const {login} = React.useContext(AuthContext)
+
 return(
     <Styles>
         <div className="authContainer">
@@ -35,25 +36,22 @@ return(
                             .max(8, 'Must be 8 characters or less')
                             .required('Required'),
                         })}
-                        onSubmit={(values, { setSubmitting }) => {
-                        //   setTimeout(() => {
-                            // alert(JSON.stringify(values, null, 2));
-                            login(values)
-                            console.log(values)
+                        onSubmit={async (values, { setSubmitting }) => {
                             setSubmitting(false);
-                        //   }, 400);
+                            await login(values)
                         }}
                         >
-                        {(setSubmitting,handleSubmit,values) => (
+                        {({setSubmitting,handleSubmit,handleChange,values}) => (
                         <Form onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" name='email'/>
+                                <Form.Control type="email" placeholder="Enter email" name='email' value={values.email} onChange={handleChange}/>
                                 <ErrorMessage name="email" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" name='password' />
+                                <Form.Control type="password" placeholder="Password"  name='password' value={values.password} onChange={handleChange}/>
+                                <ErrorMessage name="password" />
                             </Form.Group>
                             <Form.Group>
                                  <div className="mt-4 clearfix">
@@ -70,7 +68,7 @@ return(
                             <Form.Group>
                                 <div className="mt-5">
                                         <Button type='submit'  variant="secondary btn-action" size="lg" disabled={!setSubmitting} block>
-                                            LOGIN
+                                            LOGIN  {!setSubmitting ? (<span id="login_spinner" className="fa fa-spin fa-spinner"></span>) :null}
                                         </Button>
                                 </div>
                             </Form.Group>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Row, Container, Button, Navbar, Nav, Form, img, Badge, Dropdown, DropdownButton, Jumbotron, Card } from 'react-bootstrap';
+import { Col, Row, Container, Navbar, Form, img, Badge, Dropdown, DropdownButton, Jumbotron, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../Assets/Img/logo.png';

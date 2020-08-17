@@ -14,9 +14,13 @@ const Styles = styled.div `
 
 `;
 
-export const Reset_password = () => {
+export const Forget_password = ({params,query}) => {
     const alert = useAlert()
     const history = useHistory()
+    const token = params.token
+    const email = query.email
+
+
 return(
     <Styles>
         <div className="authContainer">
@@ -27,20 +31,22 @@ return(
                 <Col xs={6} md={6}>
                     <div className="formContainer-1">
                         <h3 className="title-text mb-5">Welcome to NRS</h3>
-                        <p> Please enter your email to reset your password</p>
+                        <p> Please enter your new Password </p>
                         <Formik
-                        initialValues={{ email: ''}}
+                        initialValues={{ password: '',confirm_password:''}}
                         validationSchema={Yup.object({
-                          email: Yup.string()
-                            .email('Invalid email address')
-                            .required('Required')
+                          password: Yup.string()
+                          .max(8, 'Must be 8 characters or less')
+                          .required('Required'),
+                          confirm_password: Yup.string()
+                          .oneOf([Yup.ref('password'), null], 'Passwords must match')
                         })}
-                        onSubmit={async (values, { setSubmitting }) => {
+                        onSubmit={async ({ setSubmitting,password,confirm_password }) => {
                             setSubmitting(false);
-                          const response =  await AuthService.sendResetEmail(values.email)
+                          const response =  await AuthService.forgetPassword(password,confirm_password,token,email)
                            if (response.success) {
                             history.push('/login')
-                            alert.success('Email sent successfully')
+                            alert.success('Password reset successfully')
                             return
                           }
                 
@@ -51,9 +57,15 @@ return(
                         <Form onSubmit={handleSubmit}>
                             
                         <Form.Group>
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" name='email' value={values.email} onChange={handleChange} />
-                                <ErrorMessage name="email" />
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Enter password" name='password' value={values.password} onChange={handleChange} />
+                                <ErrorMessage name="password" />
+                        </Form.Group>
+
+                        <Form.Group>
+                                <Form.Label>Confirm Password</Form.Label>
+                                <Form.Control type="password" placeholder="Enter confirm password" name='confirm_password' value={values.confirm_password} onChange={handleChange} />
+                                <ErrorMessage name="confirm_password" />
                         </Form.Group>
                         
                             <Form.Group>
