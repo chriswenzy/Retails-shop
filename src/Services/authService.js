@@ -16,7 +16,7 @@ export class AuthService{
 
     static async login(model){
         try{
-            const response = await ApiClient.post('/auth/login',model)
+            const response = await ApiClient.post('/users/login',model)
            return response
         }catch(err){
             return err

@@ -12,13 +12,15 @@ $box-shadow-btn: 0px 5px 30px 0px rgba(0,0,0,0.15);
 $bg-img: '../Img/login-bg.png';
 
 
-* , a{
+* , a, .txt{
     font-family: 'Lato', sans-serif;
     color: $text-color;
 }
 a:hover{
     text-decoration: none;
 }
+
+
 
 body{
     background: #F5F5FD;
@@ -99,6 +101,44 @@ body{
     border: none;
 }
 
+.btn-create{
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid $text-color;
+    color: $text-color;
+    
+}
+
+.btn-cancel{
+    @extend .btn-create;
+    background: red;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 40px;
+}
+
+.btn-save{
+    @extend .btn-cancel;
+    background: $text-color;
+    color: white;
+}
+
+.btn-filter-all{
+    @extend .btn-save;
+    background: white;
+    color: $text-color;
+    border: 1px solid $text-color;
+    padding: 5px;
+    width: 60px;
+    height: 40px;
+}
+
+.btn-filter{
+    @extend .btn-filter-all;
+    background: transparent;
+    border: none;
+}
 .stepwizard-step p {
 	margin-top: 10px;
 }
@@ -144,6 +184,11 @@ body{
     border-radius: 15px;
     color: white;
     background-color: $text-color;
+
+    p{
+        width: 100px;
+        align-content: center;
+    }
 }
 
 .bg-lite{
@@ -167,6 +212,7 @@ body{
 
 .card{
     transition: all .6s ease;
+    border: none;
 }
 
 .card:hover{
@@ -174,6 +220,7 @@ body{
     transform: scale(1.05, 1.05);
     animation: pulse 6s;
     transition: all .6s ease;
+    z-index: 1;
 }
 
 .card-header{
@@ -193,4 +240,56 @@ body{
     white-space: nowrap;
 }
 
+.navbar-light .navbar-nav .nav-link{
+    color: $text-color;
+}
+
+.breadcrum {
+   
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      li {
+        position: relative;
+        background:#F5F5FD;
+        color: $text-color;
+        height: 30px;
+        padding: 0 20px 0 40px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        font-size: 14px;
+      }
+      
+      li::after {
+          content: '';
+          position: absolute;
+          width: 5px;
+          height: 15px;
+          background:$text-color;
+          top: 0;
+          right: -10px;
+          z-index: 9;
+          border-right: 2px solid #fff;
+          transform: skewX(45deg);
+      }
+      
+      li::before {
+            content: '';
+          position: absolute;
+          width: 5px;
+          height: 15px;
+          background:$text-color;
+          bottom: 0;
+          right: -10px;
+          z-index: 9;
+          border-right: 2px solid #fff;
+          transform: skewX(-45deg);
+      }
+}
 

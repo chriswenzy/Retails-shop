@@ -33,7 +33,7 @@ return(
                             .email('Invalid email address')
                             .required('Required'),
                         password: Yup.string()
-                            .max(8, 'Must be 8 characters or less')
+                            .max(12, 'Must be 12 characters or less')
                             .required('Required'),
                         })}
                         onSubmit={async (values, { setSubmitting }) => {
@@ -46,12 +46,12 @@ return(
                             <Form.Group>
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" name='email' value={values.email} onChange={handleChange}/>
-                                <ErrorMessage name="email" />
+                                <ErrorMessage name="email"  />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password"  name='password' value={values.password} onChange={handleChange}/>
-                                <ErrorMessage name="password" />
+                                <ErrorMessage name="password"/>
                             </Form.Group>
                             <Form.Group>
                                  <div className="mt-4 clearfix">
@@ -68,7 +68,7 @@ return(
                             <Form.Group>
                                 <div className="mt-5">
                                         <Button type='submit'  variant="secondary btn-action" size="lg" disabled={!setSubmitting} block>
-                                            LOGIN  {!setSubmitting ? (<span id="login_spinner" className="fa fa-spin fa-spinner"></span>) :null}
+                                            LOGIN  {!setSubmitting ? (<span id="login_spinner" className="fa fa-spin fa-spinner text-danger"></span>) :null}
                                         </Button>
                                 </div>
                             </Form.Group>

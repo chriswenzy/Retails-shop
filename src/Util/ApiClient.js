@@ -3,7 +3,7 @@ import { constant } from "./Constants/constant";
 
 export class ApiClient {
     static async request(method, url, body) {
-        const BaseURL = process.env.REACT_API_URL + `${url}`;
+        const BaseURL = 'http://nrsapi.needletech.ng/api/v1' + `${url}`;
 
         const token = localStorage.getItem("token");
 

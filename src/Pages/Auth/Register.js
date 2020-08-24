@@ -49,21 +49,22 @@ return(
                 <Col xs={12} md={3}></Col>
                 <Col xs={12} md={9}>
                     <div className="formContainer-2">
-                    <span className="title-text ml-3">Let’s get started</span>
-                    <div className="stepwizard col-md-offset-3">
+                    <span className="title-text ml-3">Let’s get you started</span>
+                    <div className="stepwizard">
                         <div className="stepwizard-row setup-panel">
                         <div className="stepwizard-step">
-                        <a href="#step-1" type="button" className="btn btn-circle btn-default1"onClick={()=>{settoggle(false)}}>1</a>
+                        <a href="#1" type="button" className="btn btn-circle" onClick={()=>{settoggle(false)}}> 1 </a>
                         <p>Personal Details</p>
+                        
                         </div>
                         
                         <div className="stepwizard-step">
-                        <a href="#step-2" type="button" className="btn btn-default1 btn-circle" disabled="disabled" onClick={()=>{settoggle(true)}}>2</a>
+                        <a href="#2" type="button" className="btn btn-circle" disabled="disabled" onClick={()=>{settoggle(true)}}> 2 </a>
                         <p>Business Details</p>
                         </div>
                         </div>
                     </div>
-                    <input id='step2' type='checkbox'></input>
+                   
                     
                     <Form>
                     {!toggle ? (

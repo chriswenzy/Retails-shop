@@ -24,7 +24,7 @@ const refresh = async() =>{
     try{
 
         const response = await AuthService.authUser()
-        if(response.data.status === 200){
+        if(response.status === 200){
             setUser(response.data.user)
         }else{
             setUser(null)
@@ -37,9 +37,11 @@ const refresh = async() =>{
 }
 
 const login = async (model)=>{
-    const response = AuthService.login(model)
+    const response = await AuthService.login(model)
+    
 
-    if(response.data.status === 200){
+
+    if(response.status === 200){
         setUser(response.data.user)
         alert.success('Login Successful')
         refresh()
@@ -48,10 +50,12 @@ const login = async (model)=>{
     if(response.data.status === 400){
         alert.error('Invalid Credentials')
     }
+    
+
 }
 
 const logout = async () => {
-    AuthService.logout()
+    await AuthService.logout()
     setUser(null)
     alert.success('User logged out successfully')
     history.push('/')

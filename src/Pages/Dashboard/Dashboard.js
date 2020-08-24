@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../Assets/Img/logo.png';
 import User from '../../Assets/Img/user-icon.png';
-import notify from '../../Assets/Img/notify-icon.png';
 import Users from '../../Assets/Img/icons/users.png';
 import Clients from '../../Assets/Img/icons/clients.png';
 import Business from '../../Assets/Img/icons/business.png';
@@ -26,15 +25,15 @@ export const Dashboard = () => (
         <Navbar bg="lite" variant="light">
         <Navbar.Brand href="#home" className="mr-auto">
             <img  className="logo" src={Logo} alt="Logo"/>
-            <i class="fa fa-bell" aria-hidden="true"></i>
+           
 
         </Navbar.Brand>
             <Form inline className="mr-3">
-                <img  className="notify" src={notify} alt="Notification bell" /> <Badge variant="danger rounded-circle" className="mb-4 mr-4">9</Badge>
+            <i class="fa fa-bell" aria-hidden="true"></i> <Badge variant="danger rounded-circle" className="mb-4 mr-4">9</Badge>
 
                 <img  className="notify mr-3" src={User} alt="users icon" />
                 <DropdownButton id="dropdown-basic-button"  variant="lite" title="Chris,   Admin ">
-                    <Dropdown.Item href="#">Profile</Dropdown.Item>
+                    <Dropdown.Item href="/Profile">Profile</Dropdown.Item>
                     <Dropdown.Item href="#">Logout</Dropdown.Item>
                 </DropdownButton>
             </Form>
